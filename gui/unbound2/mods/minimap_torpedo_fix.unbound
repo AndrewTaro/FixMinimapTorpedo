@@ -13,12 +13,16 @@
 
 		(var markerIcon:str = "visibleAsNormal	?	'icon_torpedo_' + SC.Battle.TORPEDO_MARKER_TYPE.NORMAL + '_' + relation
 												:	'icon_torpedo_' + type + '_' + relation")
+		#FIX
+		(var isCircle:bool = "'not_dangerous' in type")
+		#FIX
 	)
 	
 	#FIX
 	(style
 		(width = 0) (height = 0)
 		(align = "center|middle")
+		(bind marginTop "isCircle ? 0 : -1")
 	)
 	#FIX
 
