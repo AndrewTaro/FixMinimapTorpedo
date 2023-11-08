@@ -1,6 +1,8 @@
 (def element MapTorpedoMarker (_markerEntity:gfx, _mapScale:number, _itemScale:number, _scaleRatio:number) layout=true
 	(scope
-		(var markerYaw:number = "radToGrad(_markerEntity.mapPosition.yaw)" (event "evEnterFrame"))
+		#FIX
+		(var markerYaw:number = "radToGrad(_markerEntity.mapPosition.yaw) + 180.0" (event "evEnterFrame"))
+		#FIX
 		(var markerScale:number = "_itemScale / _mapScale")
 
 		(macro GET_MARKER_ENTITY_COMPONENT 'torpedo')
@@ -13,16 +15,13 @@
 
 		(var markerIcon:str = "visibleAsNormal	?	'icon_torpedo_' + SC.Battle.TORPEDO_MARKER_TYPE.NORMAL + '_' + relation
 												:	'icon_torpedo_' + type + '_' + relation")
-		#FIX
-		(var isCircle:bool = "'not_dangerous' in type")
-		#FIX
 	)
 	
 	#FIX
 	(style
 		(width = 0) (height = 0)
 		(align = "center|middle")
-		(bind marginTop "isCircle ? 0 : -1")
+		(bind rotation "markerYaw")
 	)
 	#FIX
 
